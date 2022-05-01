@@ -3,7 +3,7 @@ class Worker:
     def __init__(self, name, brutto_salary):
         self._name = name
         self._poz_a = float(brutto_salary)
-        self._poz_c = round(self._poz_a * 0.0976, 2) + round(self._poz_a * 0.015, 2) + round(self._poz_a * 0.0245, 2)
+        self._poz_c = round(round(self._poz_a * 0.0976, 2) + round(self._poz_a * 0.015, 2) + round(self._poz_a * 0.0245, 2), 2)
         self._poz_d = self._poz_a - self._poz_c
         self._poz_e = round(self._poz_d * 0.09, 2)
         self._poz_f = round(self._poz_d * 0.0775, 2)
