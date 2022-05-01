@@ -8,15 +8,18 @@ class Worker:
         self._poz_e = round(self._poz_d * 0.09, 2)
         self._poz_f = round(self._poz_d * 0.0775, 2)
         self._poz_g = 111.25
-        self._poz_h = round(self._poz_a - self._poz_g - self._poz_c, 2)
-        self._poz_i = round(round(self._poz_h * 0.18, 2) - 46.33, 2)
-        self._poz_j = round(self._poz_i - self._poz_f, 2)
+        self._poz_h = int(self._poz_a - self._poz_g - self._poz_c)
+        self._poz_i = round((self._poz_h * 0.18) - 46.33, 2)
+        self._poz_j = int(self._poz_i - self._poz_f)
         self._poz_k = round(self._poz_a - self._poz_c - self._poz_e - self._poz_j, 2)
         self._poz_l = round(self._poz_a * 0.0976, 2) + round(self._poz_a * 0.065, 2) + round(self._poz_a * 0.0193, 2) + round(self._poz_a * 0.0245, 2) + round(self._poz_a * 0.001, 2)
         self._poz_ł = round(self._poz_a + self._poz_l, 2)
 
     def print_output(self):
-        print(self._name, self._poz_k, self._poz_l, self._poz_ł)
+        print(self._name, "%.2f"%self._poz_k, "%.2f"%self._poz_l, "%.2f"%self._poz_ł)
+
+    def get_total_employer_cost(self):
+        return self._poz_ł
 
 workers_count = int( input() )
 
@@ -29,7 +32,13 @@ for index in range(0, workers_count):
 
     workers.append(worker)
 
+total_cost = 0
+
 for index in range(0, workers_count):
     worker = workers[index]
 
+    total_cost += worker.get_total_employer_cost()
+
     worker.print_output()
+
+print("%.2f"%total_cost)
