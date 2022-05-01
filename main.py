@@ -16,7 +16,7 @@ class Worker:
         self._poz_ł = round(self._poz_a + self._poz_l, 2)
 
     def print_output(self):
-        print(self._name, " ", self._poz_k, " ", self._poz_l, " ", self._poz_ł)
+        print(self._name, self._poz_k, self._poz_l, self._poz_ł)
 
 workers_count = int( input() )
 
